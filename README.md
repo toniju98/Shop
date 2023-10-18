@@ -1,31 +1,22 @@
 # ERC20-Token-E-Commerce-Shop
 
-> I built an E commerce shop where the payment works exclusively with MetaMask. The reason, why I built it, was, that I was part of a team which planned to bring out a shop where people can only buy with our own ERC20-Token. My foundation therefore was a almost ready e commerce shop, which you can find here: https://github.com/justdjango/django-ecommerce/tree/master/djecommerce
-I didn't change very much on the style. I simplified it more. I deleted all the classic payment stuff and some other extra features. The goal was to have an absolutely basic merch shop. I won't explain the whole structure of the shop because there is already the repo for it. I will show more detailed how I implemented the Meta mask payment and login process. The login is similar like in OpenSea e.g. But it is a bit more complicated.
-
-
+**ERC20-Token-E-Commerce-Shop** is an E-commerce platform that exclusively accepts payments via MetaMask. This project was born out of the need to create a platform where users could purchase products using a custom ERC20 token. The foundation for this project was an existing E-commerce shop that can be found here: [Django E-commerce](https://github.com/justdjango/django-ecommerce/tree/master/djecommerce). The core changes involved simplifying the design and eliminating conventional payment methods, transforming it into a streamlined merch shop.
 
 ## Table of Contents
-* [General Info](#general-information)
-* [Technologies Used](#technologies-used)
-* [Features](#features)
-* [Screenshots](#screenshots)
-* [Setup](#setup)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
-
+- [General Information](#general-information)
+- [Technologies Used](#technologies-used)
+- [Key Features](#key-features)
+- [Screenshots](#screenshots)
+- [Setup](#setup)
+- [Project Status](#project-status)
+- [Room for Improvement](#room-for-improvement)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 ## General Information
+**ERC20-Token-E-Commerce-Shop** is an online shop where users can log in solely using their MetaMask wallet and complete purchases with it. The login mechanism operates through a signature process, similar to the one explained here: [One-Click Sign-In Using MetaMask](https://www.quicknode.com/guides/web3-sdks/how-to-build-a-one-click-sign-in-using-metamask-with-phps-laravel). Understanding Web3 development is crucial to comprehend the inner workings of this platform.
 
-It shows an online shop where you can login only with your MetaMask wallet and pay with it. 
-The login function works with a signature process like in https://www.quicknode.com/guides/web3-sdks/how-to-build-a-one-click-sign-in-using-metamask-with-phps-laravel.
-You need to dive a bit deeper into Web3 development before to understand how it all works. The goal of the shop was to sell merch of an NFT project. This merch should be paid with ERC20-Tokens. 
-To be eligible to buy merch you needed to possess an NFT of this specific NFT project. The whole login system needed to be adapted because you don't login with username + password. 
-So the standard authentification of Django needed to be changed.
-
-
+The primary goal of this shop was to sell merchandise related to an NFT project. To be eligible for purchasing merchandise, users were required to possess an NFT from this specific project. This unique login system was necessary because it didn't rely on traditional username-password authentication; hence, it involved adapting Django's standard authentication process.
 
 ## Technologies Used
 - Python
@@ -35,17 +26,14 @@ So the standard authentification of Django needed to be changed.
 - JavaScript
 - Web3
 
-
-## Features
-
-- login with MetaMask wallet
-- pay with ERC20-Tokens
-- get order emails
-- cart
+## Key Features
+- Login with MetaMask wallet
+- Payment with ERC20 tokens
+- Order email notifications
+- Shopping cart
 
 
 ## Screenshots
-
 ![Main page](./img/shop1.PNG)
 
 The first screenshot shows the main page where all products are listed (in this case one T-Shirt).
@@ -79,39 +67,27 @@ If you want to checkout you need to specify your address.
 
 The last process is the payment. The payment runs over MetaMask. As mentioned, you pay with ERC20-Tokens. The amount for your order is sent to the contract of the ERC-20 Token.
 
-
-
 ## Setup
+You can start the project by running `python manage.py runserver`. You will likely need to provide credentials and your own smart contract ABIs. The backend was hosted using a MySQL Docker container, but you can use an SQLite database as an alternative. Please note that this project is not actively maintained, so some features may not work as expected. Feel free to use it as a source of inspiration.
 
-You start it simply with python manage.py runserver. You will probably need to fill in some credentials before and you need your own smart contract ABIs.
-The Backend was an MySQL docker container. You can use a sqlite database as well if you want. The project is not tested anymore, so it can be that not everything works.
-But feel free to use it as inspiration.
-
-My tip would be to start first with the https://github.com/justdjango/django-ecommerce/tree/master/djecommerce code. You should first understand Django and how e-commerce shops are built in general.
-In addition to that knowledge in Web3 in combination with JavaScript is needed. It's good to have an understanding of Solidity and smart contracts as well and know how to interact with them.
-
-
+My recommendation is to begin by understanding the [Django E-commerce code](https://github.com/justdjango/django-ecommerce/tree/master/djecommerce). Familiarize yourself with Django and how E-commerce platforms are typically built. Additionally, a grasp of Web3 development, JavaScript, Solidity, smart contracts, and their interaction is essential.
 
 ## Project Status
-Project is: _not longer worked on_
-
+Project Status: _No longer actively worked on_
 
 ## Room for Improvement
+Opportunities for improvement:
+- Enhance the design and user interface
+- Consider using modern front-end frameworks like React or Angular
 
-Room for improvement:
-- better design
-- use e.g. react or angular 
-
-To do:
-- my orders page (similar like amazon)
+To-Do:
+- Implement a 'My Orders' page (similar to Amazon)
 - ...
-
 
 ## Acknowledgements
 - This project was inspired by an NFT project I started in 2022
 - Many thanks to my team
 
-
 ## Contact
-Created by [@toniju98](https://github.com/toniju98) - feel free to contact me!
+Created by [@toniju98](https://github.com/toniju98) - Feel free to contact me!
 
