@@ -14,7 +14,7 @@
 - [Contact](#contact)
 
 ## General Information
-**ERC20-Token-E-Commerce-Shop** is an online shop where users can log in solely using their MetaMask wallet and complete purchases with it. The login mechanism operates through a signature process, similar to the one explained here: [One-Click Sign-In Using MetaMask](https://www.quicknode.com/guides/web3-sdks/how-to-build-a-one-click-sign-in-using-metamask-with-phps-laravel). Understanding Web3 development is crucial to comprehend the inner workings of this platform.
+**ERC20-Token-E-Commerce-Shop** is an online shop where users can log in solely using their MetaMask wallet and complete purchases with it. The login mechanism operates through a signature process, similar to the one explained here: [One-Click Sign-In Using MetaMask](https://www.quicknode.com/guides/web3-sdks/how-to-build-a-one-click-sign-in-using-metamask-with-phps-laravel). Understanding Web3 development is crucial to comprehend the inner workings of this software.
 
 The primary goal of this shop was to sell merchandise related to an NFT project. To be eligible for purchasing merchandise, users were required to possess an NFT from this specific project. This unique login system was necessary because it didn't rely on traditional username-password authentication; hence, it involved adapting Django's standard authentication process.
 
@@ -31,6 +31,20 @@ The primary goal of this shop was to sell merchandise related to an NFT project.
 - Payment with ERC20 tokens
 - Order email notifications
 - Shopping cart
+
+
+## Important files in the project
+
+Most files are basic django. For the web3 authentication and payment process the following files are interesting in the frontend:
+
+- /static_in_env/js/tokenAuthentication.js: Whole authentication process on client-side
+- /static_in_env/js/tokenPayment.js: Whole Token Payment process on client side
+
+There were some changes in the backend as well. The reason therefore was that there is no login with password but with the MetaMask wallet. That's why the user authentication was needed to change. 
+
+- nftShop/users/backend.py:
+
+- nftShop/users/models.py: 
 
 
 ## Screenshots

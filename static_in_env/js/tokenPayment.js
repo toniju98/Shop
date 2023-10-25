@@ -1,5 +1,7 @@
 import {ethers} from "../js/ethers-5.1.esm.min.js";
 
+
+// Get DOM elements
 const checkoutButton = document.getElementById('checkoutButton')
 const price = document.getElementById('price_total')
 const form = document.getElementById('formCheck');
@@ -15,15 +17,16 @@ const provider = new ethers.providers.Web3Provider(window.ethereum)
 const contract_address = "0xbd00a24Cf61D1e3EBC8cABB1A8393e33E6E56e2C";
 const to_address = "0xd46bCBfa79446BB6769feAe3E96E71fB5Aa24b53";
 
-//get json abi
+// Function to fetch token ABI from JSON file
 async function fetchTokenAbi() {
     const response = await fetch('../static/abis/TheToken.json');
     const abiToken = await response.json();
     return abiToken;
 }
 
-//on click on checkout if fields not empty send tokens
+// Event listener for the checkout button
 checkoutButton.addEventListener('click', async () => {
+    // Check if required fields are not empty
     if (name.value != "" && forename.value != "" && shipping_address.value != "" && shipping_zip.value != "" && email.value != "") {
 
         // MetaMask requires requesting permission to connect users accounts
@@ -34,7 +37,7 @@ checkoutButton.addEventListener('click', async () => {
     }
 });
 
-//send token function
+// Function to send tokens
 function send_token(
     contract_address,
     send_token_amount,
@@ -46,16 +49,19 @@ function send_token(
     provider.getGasPrice().then((currentGasPrice) => {
             let gas_price = ethers.utils.hexlify(parseInt(currentGasPrice))
             console.log(`gas_price: ${gas_price}`)
-            // general token send
+
+            // Create a contract instance
             let contract = new ethers.Contract(
                 contract_address,
                 send_abi,
                 signer
             )
             console.log(send_token_amount)
-            // How many tokens?
+
+            // Convert the token amount to the correct format
             let numberOfTokens = ethers.utils.parseUnits(send_token_amount, 18)
             console.log(`numberOfTokens: ${numberOfTokens}`)
+            
             // Send tokens
             contract.transfer(to_address, numberOfTokens).then((transferResult) => {
                 form.submit();

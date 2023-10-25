@@ -2,19 +2,25 @@ import {ethers} from "../js/ethers-5.1.esm.min.js";
 
 
 window.userWalletAddress = null
+
+// Get DOM elements and create a Web3Provider
 const loginButton = document.getElementById('loginButton')
 const provider = new ethers.providers.Web3Provider(window.ethereum)
 const nftContractAddress = "0x06c59CCF7B4D0DB3b90fb1b8ac09a697ED8515d3";
 const nodeContractAddress = "0x5A3EBd6a60582d9cC85ea09b5BBaeD0322C6fDC5";
+
 let has_nft = false;
 let has_node = false;
 
+
+// Function to fetch NFT ABI
 async function fetchNftAbi() {
     const response = await fetch('../static/abis/CreateNFT.json');
     const abiNft = await response.json();
     return abiNft;
 }
 
+// Function to fetch Node ABI
 async function fetchNodeAbi() {
     const response = await fetch('../static/abis/CreateNFTNode.json');
     const abiNode = await response.json();
@@ -22,6 +28,7 @@ async function fetchNodeAbi() {
 }
 
 
+// Toggle the login button based on the availability of MetaMask
 function toggleButton() {
     if (!window.ethereum) {
         loginButton.innerText = 'MetaMask is not installed'
@@ -33,6 +40,7 @@ function toggleButton() {
     loginButton.addEventListener('click', loginWithMetaMask)
 }
 
+// Check if the user holds NFTs or nodes
 async function isHolder(nftContractAddress, signer, nodeContractAddress, abiNft, abiNode, account) {
     const nftContract = new ethers.Contract(
         nftContractAddress,
@@ -61,6 +69,8 @@ async function isHolder(nftContractAddress, signer, nodeContractAddress, abiNft,
     return false;
 }
 
+
+// Login with MetaMask
 async function loginWithMetaMask() {
     //get signer ethers
     const signer = provider.getSigner()
@@ -133,7 +143,7 @@ async function loginWithMetaMask() {
     })
 }
 
-//log out function
+//Logout function
 async function signOutOfMetaMask() {
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
         .catch((e) => {
@@ -144,6 +154,8 @@ async function signOutOfMetaMask() {
     if (!accounts) {
         return
     }
+    
+    // Reset userWalletAddress and change button text
     window.userWalletAddress = null
     loginButton.innerText = 'Sign in with MetaMask'
     $.ajax({
@@ -152,6 +164,7 @@ async function signOutOfMetaMask() {
         data: {'csrfmiddlewaretoken': getCookie('csrftoken'), "wallet": accounts[0]}
     });
 
+     // Perform logout actions
     loginButton.removeEventListener('click', signOutOfMetaMask)
     setTimeout(() => {
         loginButton.addEventListener('click', loginWithMetaMask)
