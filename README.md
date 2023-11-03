@@ -42,9 +42,9 @@ Most files are basic django. For the web3 authentication and payment process the
 
 There were some changes in the backend as well. The reason therefore was that there is no login with password but with the MetaMask wallet. That's why the user authentication was needed to change. 
 
-- nftShop/users/backend.py:
+- nftShop/users/backend.py: This script defines a custom authentication backend. It is used for the special user authentication, which includes checking for a wallet and whether someone owns an NFT.
 
-- nftShop/users/models.py: 
+- nftShop/users/models.py: This script sets up a custom user model and manager that is used to create and manage user accounts with additional fields like wallet, NFT status, and nonce.
 
 
 ## Screenshots
