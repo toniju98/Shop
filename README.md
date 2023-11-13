@@ -37,8 +37,8 @@ The primary goal of this shop was to sell merchandise related to an NFT project.
 
 Most files are basic django. For the web3 authentication and payment process the following files are interesting in the frontend:
 
-- /static_in_env/js/tokenAuthentication.js: Whole authentication process on client-side
-- /static_in_env/js/tokenPayment.js: Whole Token Payment process on client side
+- nftShop/static_in_env/js/tokenAuthentication.js: Whole authentication process on client-side
+- nftShop/static_in_env/js/tokenPayment.js: Whole Token Payment process on client side
 
 There were some changes in the backend as well. The reason therefore was that there is no login with password but with the MetaMask wallet. That's why the user authentication was needed to change. 
 
