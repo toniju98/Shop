@@ -5,5 +5,4 @@ nftshop/static_in_env/abis/
 __pycache__/
 nftshop/__pycache__/
 nftshop/media/
-static_in_env/
 nftshop/.env
